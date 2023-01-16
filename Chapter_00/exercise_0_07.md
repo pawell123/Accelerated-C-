@@ -1,5 +1,5 @@
-// Exercise 0.7
-// Is this a valid program? Why or why not?
+# Exercise 0.7
+# Is this a valid program? Why or why not?
 
 #include <iostream>
 int main()
@@ -11,4 +11,4 @@ int main()
     return 0;
 }
 
-The code is not valid. You cannot nest delimiter */ .
+**The code is not valid. You cannot nest delimiter */ .**

@@ -1,5 +1,6 @@
-// Exercise 0.1
-// What does the following statement do?
-// 3+4;
+# Exercise 0.1
+# What does the following statement do?
 
- It computes 3+4 and ignores a result.
+3+4;
+
+**It computes 3+4 and ignores a result.**

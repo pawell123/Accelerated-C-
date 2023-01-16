@@ -3,4 +3,5 @@
 
 3+4;
 
-**It computes 3+4 and ignores a result.**
+
+*It computes 3+4 and ignores a result.*

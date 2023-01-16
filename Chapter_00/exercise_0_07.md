@@ -1,5 +1,5 @@
-# Exercise 0.7
-# Is this a valid program? Why or why not?
+## Exercise 0.7
+### Is this a valid program? Why or why not?
 
 #include <iostream>
 int main()

@@ -15,4 +15,4 @@ int main()
 }
 
 // The code is valid.
-// The code is also valid with };} in the third line from the end.
+// The code is also valid with };} in the fourth line from the end.

@@ -18,7 +18,7 @@ int main()
     return 0;
 }
 
-// The code is valid.
+// The code is valid. It creates std::string s variable two times and initializes it with different values.
 // Output:
 // a string
 // another string

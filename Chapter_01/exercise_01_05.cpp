@@ -1,5 +1,5 @@
-## Exercise 1.5
-### Is this program valid? If so, what does it do? If not, say why not, and rewrite it to be valid.
+// Exercise 1.5
+// Is this program valid? If so, what does it do? If not, say why not, and rewrite it to be valid.
 
 #include <iostream>
 #include <string>
@@ -14,5 +14,5 @@ int main()
 }
 
 
-*The code is NOT valid. Out of range using x variable.*
+// The code is NOT valid. Out of range using x variable.
 

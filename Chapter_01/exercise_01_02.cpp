@@ -15,4 +15,4 @@ int main()
 }
 
 // The first definition is valid.
-// The second definition is NOT valid. There are no operator+ for string literals.
+// The second definition is NOT valid. There is no operator+ for string literals.

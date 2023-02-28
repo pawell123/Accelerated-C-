@@ -2,7 +2,6 @@
 // Write a program to count down from 10 to -5.
 
 #include <iostream>
-#include <string>
 
 int main()
 {

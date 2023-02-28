@@ -14,4 +14,4 @@ int main()
     return 0;
 }
 
-// The code is valid (+operator is left-associative)
+// The code is valid (operator+ is left-associative)

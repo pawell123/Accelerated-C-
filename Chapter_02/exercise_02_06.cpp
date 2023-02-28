@@ -2,7 +2,6 @@
 // What does the following code do?
 
 #include <iostream>
-#include <string>
 
 int main()
 {

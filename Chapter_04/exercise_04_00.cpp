@@ -5,7 +5,7 @@
 #include <ios>
 #include <iomanip>
 #include <iostream>
-#include <numeric>
+#include <stdexcept>
 #include <string>
 #include "grade.hpp"
 #include "Student.hpp"

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+
 int main()
 {
     { std::string s = "a string";
@@ -14,5 +15,5 @@ int main()
 }
 
 
-// The code is NOT valid. Out of range using x variable.
+// The code is NOT valid. Using x variable out of range.
 

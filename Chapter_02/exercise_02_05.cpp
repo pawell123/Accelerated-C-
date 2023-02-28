@@ -45,16 +45,26 @@ void triangle()
 {
     const int height = 10;
 
-    std::cout << '*' << std::endl;
-    for (int h = 0; h != height-1; ++h)
+    for (int h = 0; h != height; ++h)
     {
-        if (h > 0)
+        if (h == 0)
+        {
+            std::cout << '*' << std::endl;
+        }
+        else if (h == 1)
+        {
+            std::cout << "**" << std::endl;
+        }
+        else if (h == height-1)
+        {
+            std::cout << std::string(height, '*') << std::endl;
+        }
+        else
         {
             std::cout << '*' + std::string(h-1, ' ') + '*';
             std::cout << std::endl;
         }
     }
-    std::cout << std::string(height, '*') << std::endl;
 }
 
 int main()

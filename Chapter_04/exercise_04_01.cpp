@@ -8,11 +8,11 @@
 
 int main()
 {
-    /*****
-    int maxlen;
-    Student s;
-    std::max(s.name.size(), maxlen);
-    ******/
+    /*
+        int maxlen;
+        Student s;
+        std::max(s.name.size(), maxlen);
+    */
     // Above code is not correct (cannot deduce return type)
 
     std::string::size_type maxlen = 0;

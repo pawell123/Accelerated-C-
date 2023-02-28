@@ -26,7 +26,7 @@ int main()
         std::string::size_type c = 0;
         while (c != cols)
         {
-            if (r == pad + 1 && c == pad+1)
+            if (r == pad+1 && c == pad+1)
             {
                 std::cout << greeting;
                 c += greeting.size();
@@ -49,3 +49,4 @@ int main()
 
     return 0;
 }
+

@@ -2,25 +2,36 @@
 // Write a program to count how many times each distinct word appears in its input.
 
 #include <algorithm>
+#include <iomanip>
 #include <iostream>
+#include <map>
 #include <string>
+#include <utility>
 #include <vector>
 
-int main()
+std::vector<std::string> readWords(std::istream& in)
 {
-    std::cout << "Write words: ";
+    std::vector<std::string> ret;
 
-    std::vector<std::string> words;
-    std::string w;
-    while (std::cin >> w)
+    std::string word;
+    while (in >> word)
     {
-        words.push_back(w);
+        ret.push_back(word);
     }
+    return ret;
+}
+
+// version 1
+std::vector<std::pair<std::string, unsigned>> countWords1(std::istream& in)
+{
+    std::vector<std::pair<std::string, unsigned>> ret;
+
+    std::vector<std::string> words = readWords(in);
 
     std::sort(words.begin(), words.end());
 
     std::string previousWord;
-    std::string::size_type counter = 0;
+    unsigned counter = 0;
 
     for (std::string::size_type i = 0; i != words.size(); ++i)
     {
@@ -32,7 +43,7 @@ int main()
         }
         else
         {
-            std::cout << "Word: " << previousWord << ": " << counter << std::endl;
+            ret.push_back(std::make_pair(previousWord, counter));
             counter = 1;
         }
         previousWord = currentWord;
@@ -40,7 +51,33 @@ int main()
 
     if (!words.empty())
     {
-        std::cout << "Word: " << words.back() << ": " << counter << std::endl;
+        ret.push_back(std::make_pair(words.back(), counter));
+    }
+    return ret;
+}
+
+// version 2
+std::map<std::string, unsigned> countWords2(std::istream& in)
+{
+    std::map<std::string, unsigned> ret;
+
+    std::string word;
+    while (in >> word)
+    {
+        ++ret[word];
+    }
+    return ret;
+}
+
+int main()
+{
+    std::cout << "Write words: ";
+
+    const auto wordsCounters1 = countWords1(std::cin); // countWords2(std::cin)
+
+    for (const auto& item : wordsCounters1)
+    {
+        std::cout << std::setw(10) << item.first << " " << item.second << std::endl;
     }
 
     return 0;

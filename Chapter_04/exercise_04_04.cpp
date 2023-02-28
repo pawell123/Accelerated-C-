@@ -10,13 +10,13 @@
 int main()
 {
     const int range = 1000;
-    const auto maxValue1 = static_cast<int>(std::to_string(range-1).size());
-    const auto maxValue2 = static_cast<int>(std::to_string((range-1)*(range-1)).size());
+    const auto maxLength1 = static_cast<std::streamsize>(std::to_string(range-1).size());
+    const auto maxLength2 = static_cast<std::streamsize>(std::to_string((range-1)*(range-1)).size());
 
-    const std::streamsize prec = std::cout.precision();
+    const std::streamsize prec = std::cout.precision(0);
     for (int i = 0; i != range; ++i)
     {
-        std::cout << std::fixed << std::setw(maxValue1) << std::setprecision(0) << static_cast<double>(i) << " " << std::setw(maxValue2)
+        std::cout << std::fixed << std::setw(maxLength1) << static_cast<double>(i) << " " << std::setw(maxLength2)
                   << static_cast<double>(i) * static_cast<double>(i) << std::endl;
     }
     std::cout.precision(prec);

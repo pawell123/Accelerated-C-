@@ -28,8 +28,8 @@ int main()
         return 1;
     }
 
-    std::cout << "Shortest word: " << shortest << std::endl;
-    std::cout << "Longest word: " << longest << std::endl;
+    std::cout << "Shortest word size: " << shortest << std::endl;
+    std::cout << "Longest word size: " << longest << std::endl;
 
     return 0;
 }

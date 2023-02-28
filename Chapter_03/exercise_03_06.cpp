@@ -33,8 +33,7 @@ int main()
         ++count;
     }
 
-    const double homework = (count == 0) ? 0
-                                         : 0.4 * sum / count;
+    const double homework = (count == 0) ? 0 : (0.4 * sum / count);
 
     std::streamsize prec = std::cout.precision();
     std::cout << std::endl << "Your final grade is " << std::setprecision(3)

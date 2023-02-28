@@ -1,3 +1,6 @@
+// Exercise 3.0b
+// Compile, execute, and test the programs in this chapter.
+
 #include <algorithm>
 #include <iomanip>
 #include <ios>
@@ -36,9 +39,9 @@ int main()
 
     std::vector<double>::size_type size = homeworkGrades.size();
 
-    std::vector<double>::size_type mid = size/2;
-    double median = size % 2 == 0 ? (homeworkGrades[mid] + homeworkGrades[mid-1]) / 2
-                                  : homeworkGrades[mid];
+    std::vector<double>::size_type mid = size / 2;
+    const double median = size % 2 == 0 ? (homeworkGrades[mid] + homeworkGrades[mid-1]) / 2
+                                        : homeworkGrades[mid];
 
     std::streamsize prec = std::cout.precision();
     std::cout << "Your final grade is " << std::setprecision(3)

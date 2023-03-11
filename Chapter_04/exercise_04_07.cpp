@@ -5,21 +5,30 @@
 #include <numeric>
 #include <vector>
 
-int main()
+double average1(const std::vector<double>& vec)
 {
-    std::vector<double> vec = { 1.0, 2.0, 3.0 };
+    return std::accumulate(vec.begin(), vec.end(), 0.0) / vec.size();
+}
 
-    std::cout << "1) Average: " << std::accumulate(vec.begin(), vec.end(), 0.0) / vec.size() << std::endl;
-
-    // or
-
+double average2(const std::vector<double>& vec)
+{
     double sum = 0.0;
-    for (auto elem : vec)
+    for (const auto elem : vec)
     {
         sum += elem;
     }
+    return sum / vec.size();
+}
 
-    std::cout << "2) Average: " << sum / vec.size() << std::endl;
+int main()
+{
+    const std::vector<double> vec = { 1.0, 2.0, 3.0 };
+
+    // First solution
+    std::cout << "1) Average: " << average1(vec) << std::endl;
+
+    // Second solution
+    std::cout << "2) Average: " << average2(vec) << std::endl;
 
     return 0;
 }

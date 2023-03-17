@@ -1,7 +1,8 @@
-// Exercise 5.3
-// By using a typedef, we can write one version of the program
-// that implements either a vector-based solution or a list-based one.
-// Write and test this version of the program.
+// Exercise 5.4
+// Look again at the driver functions you wrote in the previous exercise. Note that it is
+// possible to write a driver that differs only in the declaration of the type for the data
+// structure that holds the input file. If your vector and list test drivers differ in any
+// other way, rewrite them so that they differ only in this declaration.
 
 #include <iostream>
 #include <list>

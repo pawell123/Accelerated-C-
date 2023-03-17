@@ -14,7 +14,7 @@
 
 bool isAscender(char c)
 {
-    const std::string ascenders = "bdfhklt";
+    static const std::string ascenders = "bdfhklt";
     return std::find(ascenders.cbegin(), ascenders.cend(), c) != ascenders.cend();
 }
 
@@ -25,7 +25,7 @@ bool hasAscenders(const std::string& str)
 
 bool isDescender(char c)
 {
-    const std::string descenders = "gjpqy";
+    static const std::string descenders = "gjpqy";
     return std::find(descenders.cbegin(), descenders.cend(), c) != descenders.cend();
 }
 
@@ -36,15 +36,14 @@ bool hasDescenders(const std::string& str)
 
 int main()
 {
-    std::vector<std::string> words{"fewfew", "aaaccc", "agt", "fff", "actca", "c"};
+    const std::vector<std::string> words{"fewfew", "aaaccc", "agt", "fff", "actca", "c", "acacac", "eeeee"};
     std::vector<std::string> longestWordsWithoutAscendersNorDescenders;
-
 
     for (const auto& word : words)
     {
         if (hasAscenders(word) || hasDescenders(word))
         {
-            std::cout << "Word: " << word << " has ascenders/descenders";
+            std::cout << "Word: " << word << " has ascenders/descenders" << std::endl;
         }
         else
         {
@@ -61,7 +60,7 @@ int main()
 
     if (!longestWordsWithoutAscendersNorDescenders.empty())
     {
-        std::cout << "Longest word without ascenders nor descenders are: " << std::endl;
+        std::cout << std::endl << "Longest words without ascenders nor descenders are: " << std::endl;
         for (const auto& word : longestWordsWithoutAscendersNorDescenders)
         {
             std::cout << word << std::endl;

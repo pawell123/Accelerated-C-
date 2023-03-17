@@ -43,8 +43,21 @@ std::vector<std::string> frame(const std::vector<std::string>& vec)
 
 int main()
 {
-    std::vector<std::string> v;
-    frame(v);
+    std::vector<std::string> pic;
+    pic = frame(pic);
+
+    for (const auto& line : pic)
+    {
+        std::cout << line << std::endl;
+    }
 
     return 0;
 }
+
+/*
+
+Output:
+****
+****
+
+*/

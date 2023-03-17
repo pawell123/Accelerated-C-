@@ -27,7 +27,7 @@ std::vector<Student> extract_fails(std::vector<Student>& students)
     std::vector<Student>::iterator iterPassed = students.begin();
     std::vector<Student>::iterator iter = students.begin();
 
-    while (iterPassed != students.end() and iter != students.end())
+    while (iter != students.end())
     {
         iterPassed = std::find_if(students.begin(), students.end(), fgrade);
         iter = std::find_if(iterPassed, students.end(), pgrade);
@@ -49,7 +49,7 @@ std::vector<Student> extract_fails_without_stl(std::vector<Student>& students)
     std::vector<Student>::iterator iterPassed = students.begin();
     std::vector<Student>::iterator iter = students.begin();
 
-    while (iterPassed != students.end() and iter != students.end())
+    while (iter != students.end())
     {
         while (iterPassed != students.end() && pgrade(*iterPassed))
         {
@@ -79,7 +79,7 @@ std::vector<Student> extract_fails_without_stl(std::vector<Student>& students)
 
 int main()
 {
-    std::cout << "Test" << std::endl << std::endl;
+    std::cout << "Test:" << std::endl << std::endl;
 
     std::vector<Student> students{Student{"One", 1, 2, {3}},
                                   Student{"Two", 1000, 2000, {3000}},

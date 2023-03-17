@@ -8,24 +8,38 @@
 #include <string>
 #include <vector>
 
-bool is_palindrome(const std::string& s)
+bool isPalindrome(const std::string& str)
 {
-    return std::equal(s.cbegin(), s.cend(), s.rbegin(),
+    return std::equal(str.cbegin(), str.cend(), str.crbegin(),
                       [](const auto a, const auto b) { return std::tolower(a) == std::tolower(b); });
+}
+
+// without using STL
+bool isPalindrome2(const std::string& str)
+{
+    for (std::string::size_type i = 0, j = str.size()-1; i < j; ++i, --j)
+    {
+        if (std::tolower(str[i]) != std::tolower(str[j]))
+        {
+            return false;
+        }
+    }
+    return true;
 }
 
 int main()
 {
-    std::vector<std::string> words{"afga", "asddsa", "asdsa", "x", "AbBa", "bbbbbb"};
+    const std::vector<std::string> words{"afga", "asddsa", "asdsa", "x", "AbBa", "bbbbbb"};
 
     std::cout << "Palindromes: " << std::endl << std::endl;
 
     std::vector<std::string> longestPalindromes;
     for (const auto& word : words)
     {
-        if (is_palindrome(word))
+        if (isPalindrome(word))
         {
             std::cout << word << std::endl;
+
             if (longestPalindromes.empty() || word.size() > longestPalindromes.front().size())
             {
                 longestPalindromes =  std::vector<std::string>{word};

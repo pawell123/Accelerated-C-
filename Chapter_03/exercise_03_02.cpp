@@ -2,13 +2,16 @@
 // Write a program to compute and print the quartiles (that is, the quarter of the numbers
 // with the largest values, the next highest quarter, and so on) of a set of integers.
 
+#include <algorithm>
 #include <iostream>
 #include <tuple>
 #include <vector>
 
 // https://en.wikipedia.org/wiki/Quartile - method 1
-std::tuple<double, double, double> quartiles(const std::vector<double>& vec)
+std::tuple<double, double, double> quartiles(std::vector<double> vec)
 {
+    std::sort(vec.begin(), vec.end());
+
     const double mid = vec.size() / 2;
 
     if (vec.size() % 2 == 0)

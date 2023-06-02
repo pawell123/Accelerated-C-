@@ -10,10 +10,10 @@
 #include "Student.hpp"
 
 // C++11
-using StudentsContainer = std::vector<Student>; // using Container = std::list<Student>;
+using StudentsContainer = std::vector<Student>; // using StudentsContainer = std::list<Student>;
 
 // C++98
-// typedef std::vector<Student> Container;      // typedef std::list<Student> Container;
+// typedef std::vector<Student> StudentsContainer;      // typedef std::list<Student> StudentsContainer;
 
 bool fgrade(const Student& student)
 {

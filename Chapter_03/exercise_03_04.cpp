@@ -11,25 +11,25 @@ int main()
 
     std::string word;
 
-    std::string::size_type longest = 0;
-    std::string::size_type shortest = word.max_size();
+    std::string::size_type longestWordSize = 0;
+    std::string::size_type shortestWordSize = word.max_size();
 
     while (std::cin >> word)
     {
         const std::string::size_type currentSize = word.size();
 
-        shortest = std::min(currentSize, shortest);
-        longest = std::max(currentSize, longest);
+        shortestWordSize = std::min(currentSize, shortestWordSize);
+        longestWordSize = std::max(currentSize, longestWordSize);
     }
 
-    if (longest == 0)
+    if (longestWordSize == 0)
     {
-        std::cout << "No input!" << std::endl;
+        std::cerr << "No input!" << std::endl;
         return 1;
     }
 
-    std::cout << "Shortest word size: " << shortest << std::endl;
-    std::cout << "Longest word size: " << longest << std::endl;
+    std::cout << "Shortest word size: " << shortestWordSize << std::endl;
+    std::cout << "Longest word size: " << longestWordSize << std::endl;
 
     return 0;
 }

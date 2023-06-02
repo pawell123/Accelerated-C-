@@ -38,7 +38,7 @@ int main()
     std::string str;
     while (std::getline(std::cin, str))
     {
-        std::vector<std::string> words = split(str);
+        const std::vector<std::string> words = split(str);
 
         for (std::vector<std::string>::const_iterator iter = words.cbegin(); iter != words.cend(); ++iter)
         {

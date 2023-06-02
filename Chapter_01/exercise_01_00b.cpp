@@ -14,15 +14,15 @@ int main()
     const std::string greeting = "Hello, " + name + "!";
     const std::string spaces(greeting.size(), ' ');
 
-    const std::string second = "* " + spaces + " *";
-    const std::string first(second.size(), '*');
-    const std::string third = "* " + greeting + " *";
+    const std::string secondLine = "* " + spaces + " *";
+    const std::string firstLine(secondLine.size(), '*');
+    const std::string thirdLine = "* " + greeting + " *";
 
-    std::cout << first << std::endl
-              << second << std::endl
-              << third << std::endl
-              << second << std::endl
-              << first << std::endl;
+    std::cout << firstLine << std::endl
+              << secondLine << std::endl
+              << thirdLine << std::endl
+              << secondLine << std::endl
+              << firstLine << std::endl;
 
     return 0;
 }

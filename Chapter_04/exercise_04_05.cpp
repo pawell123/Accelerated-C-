@@ -24,6 +24,10 @@ int main()
     std::vector<std::string> words = readWords(std::cin);
 
     std::cout << "Number of words: " << words.size() << std::endl;
+    if (words.empty())
+    {
+        return 0;
+    }
 
     std::sort(words.begin(), words.end());
 
@@ -43,13 +47,9 @@ int main()
             std::cout << "Word: " << previousWord << ": " << counter << std::endl;
             counter = 1;
         }
-
-        if (i == words.size() - 1)
-        {
-            std::cout << "Word: " << currentWord << ": " << counter << std::endl;
-        }
         previousWord = currentWord;
     }
+    std::cout << "Word: " << previousWord << ": " << counter << std::endl;
 
     return 0;
 }

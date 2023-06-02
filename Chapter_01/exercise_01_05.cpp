@@ -16,4 +16,5 @@ int main()
 
 
 // The code is NOT valid. Using x variable out of range.
+// To fix the code you need to remove the most nested brackets {}.
 

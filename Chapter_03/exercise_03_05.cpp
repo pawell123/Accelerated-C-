@@ -29,8 +29,8 @@ int main()
         std::cout << "Enter all your homework grades (" << numberOfHomeworks << "): ";
 
         std::vector<double> homeworkGrades;
-        double homeworkGrade;
 
+        double homeworkGrade;
         for (int i = 0; i != numberOfHomeworks; ++i)
         {
             std::cin >> homeworkGrade;
@@ -39,7 +39,7 @@ int main()
 
         if (homeworkGrades.empty())
         {
-            std::cout << std::endl << "You must enter your grades. Please try again" << std::endl;
+            std::cout << std::endl << "You must enter grades for " + name + ". Please try again" << std::endl;
             return 1;
         }
 

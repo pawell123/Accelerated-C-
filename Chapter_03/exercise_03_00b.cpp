@@ -37,13 +37,13 @@ int main()
 
     std::sort(homeworkGrades.begin(), homeworkGrades.end());
 
-    std::vector<double>::size_type size = homeworkGrades.size();
+    const std::vector<double>::size_type size = homeworkGrades.size();
 
-    std::vector<double>::size_type mid = size / 2;
+    const std::vector<double>::size_type mid = size / 2;
     const double median = size % 2 == 0 ? (homeworkGrades[mid] + homeworkGrades[mid-1]) / 2
                                         : homeworkGrades[mid];
 
-    std::streamsize prec = std::cout.precision();
+    const std::streamsize prec = std::cout.precision();
     std::cout << "Your final grade is " << std::setprecision(3)
               << 0.2 * midterm + 0.4 * final + 0.4 * median
               << std::setprecision(prec) << std::endl;

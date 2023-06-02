@@ -8,9 +8,9 @@
 #include "median.hpp"
 #include "Student.hpp"
 
-double analysis(const std::vector<Student>& students, double method(const Student&))
+double analysis(const std::vector<Student>& students, double analysisMethod(const Student&))
 {
     std::vector<double> grades;
-    std::transform(students.cbegin(), students.cend(), std::back_inserter(grades), method);
+    std::transform(students.cbegin(), students.cend(), std::back_inserter(grades), analysisMethod);
     return median(grades);
 }

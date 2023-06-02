@@ -21,12 +21,16 @@ std::vector<std::string> readWords(std::istream& in)
     return ret;
 }
 
-// version 1
+// Version 1
 std::vector<std::pair<std::string, unsigned>> countWords1(std::istream& in)
 {
     std::vector<std::pair<std::string, unsigned>> ret;
 
     std::vector<std::string> words = readWords(in);
+    if (words.empty())
+    {
+        return ret;
+    }
 
     std::sort(words.begin(), words.end());
 
@@ -48,15 +52,12 @@ std::vector<std::pair<std::string, unsigned>> countWords1(std::istream& in)
         }
         previousWord = currentWord;
     }
+    ret.push_back(std::make_pair(words.back(), counter));
 
-    if (!words.empty())
-    {
-        ret.push_back(std::make_pair(words.back(), counter));
-    }
     return ret;
 }
 
-// version 2
+// Version 2 (using std::map)
 std::map<std::string, unsigned> countWords2(std::istream& in)
 {
     std::map<std::string, unsigned> ret;

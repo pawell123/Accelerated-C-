@@ -14,7 +14,7 @@ bool isPalindrome(const std::string& str)
                       [](const auto a, const auto b) { return std::tolower(a) == std::tolower(b); });
 }
 
-// without using STL
+// without using std::equal
 bool isPalindrome2(const std::string& str)
 {
     for (std::string::size_type i = 0, j = str.size()-1; i < j; ++i, --j)
@@ -42,7 +42,7 @@ int main()
 
             if (longestPalindromes.empty() || word.size() > longestPalindromes.front().size())
             {
-                longestPalindromes =  std::vector<std::string>{word};
+                longestPalindromes = std::vector<std::string>{word};
             }
             else if (word.size() == longestPalindromes.front().size())
             {

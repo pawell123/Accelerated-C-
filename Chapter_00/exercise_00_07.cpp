@@ -2,6 +2,7 @@
 // Is this a valid program? Why or why not?
 
 #include <iostream>
+
 int main()
 {
     /* This is a comment that extends over several lines
@@ -10,6 +11,5 @@ int main()
     
     return 0;
 }
-  
-  
-// The code is not valid. You cannot nest delimiter */ .
+
+// The code is not valid. Nesting delimiter */ is not allowed.

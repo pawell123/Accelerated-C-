@@ -3,34 +3,21 @@
 
 #include <iostream>
 
-int
-main
-(
-)
+int main()
 {
-std
-::
-cout
-<<
-"H"
-"e"
-"l"
-"l"
-"o"
-","
-" "
-"w"
-"o"
-"r"
-"l"
-"d"
-"!"
-<<
-std
-::
-endl
-;
-return
-0
-;
+    std ::cout << "H"
+                  "e"
+                  "l"
+                  "l"
+                  "o"
+                  ","
+                  " "
+                  "w"
+                  "o"
+                  "r"
+                  "l"
+                  "d"
+                  "!"
+               << std ::endl;
+    return 0;
 }

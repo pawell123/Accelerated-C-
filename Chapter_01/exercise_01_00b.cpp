@@ -11,17 +11,18 @@ int main()
     std::string name;
     std::cin >> name;
 
-    const std::string greeting = "Hello, " + name + "!";
+    const std::string greeting = "Hello, " + name + '!';
     const std::string spaces(greeting.size(), ' ');
 
     const std::string secondLine = "* " + spaces + " *";
     const std::string firstLine(secondLine.size(), '*');
     const std::string thirdLine = "* " + greeting + " *";
 
-    std::cout << firstLine << std::endl
-              << secondLine << std::endl
-              << thirdLine << std::endl
-              << secondLine << std::endl
+    std::cout << '\n'
+              << firstLine << '\n'
+              << secondLine << '\n'
+              << thirdLine << '\n'
+              << secondLine << '\n'
               << firstLine << std::endl;
 
     return 0;

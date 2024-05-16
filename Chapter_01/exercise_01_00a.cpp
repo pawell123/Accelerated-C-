@@ -11,7 +11,7 @@ int main()
     std::string name;
     std::cin >> name;
 
-    std::cout << "Welcome " << name << "!" << std::endl;
+    std::cout << "Welcome " << name << '!' << std::endl;
 
     return 0;
 }

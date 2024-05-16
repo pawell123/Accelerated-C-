@@ -14,7 +14,5 @@ int main()
     return 0;
 }
 
-
-// The code is NOT valid. Using x variable out of range.
+// The code is NOT valid. The `x` variable is used out of its scope.
 // To fix the code you need to remove the most nested brackets {}.
-

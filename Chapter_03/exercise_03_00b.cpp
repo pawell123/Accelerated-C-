@@ -14,7 +14,7 @@ int main()
     std::string name;
     std::cin >> name;
 
-    std::cout << "Hello " << name << "!" << std::endl;
+    std::cout << "Hello " << name << '!' << std::endl;
 
     std::cout << "Please enter your midterm and final exam grades: ";
     double midterm, final;
@@ -31,21 +31,18 @@ int main()
 
     if (homeworkGrades.empty())
     {
-        std::cout << std::endl << "You must enter your grades. Please try again" << std::endl;
+        std::cout << "\nYou must enter your grades. Please try again!" << std::endl;
         return 1;
     }
 
     std::sort(homeworkGrades.begin(), homeworkGrades.end());
 
     const std::vector<double>::size_type size = homeworkGrades.size();
-
     const std::vector<double>::size_type mid = size / 2;
-    const double median = size % 2 == 0 ? (homeworkGrades[mid] + homeworkGrades[mid-1]) / 2
-                                        : homeworkGrades[mid];
+    const double median = (size % 2 == 0) ? (homeworkGrades[mid] + homeworkGrades[mid - 1]) / 2 : homeworkGrades[mid];
 
     const std::streamsize prec = std::cout.precision();
-    std::cout << "Your final grade is " << std::setprecision(3)
-              << 0.2 * midterm + 0.4 * final + 0.4 * median
+    std::cout << "Your final grade is " << std::setprecision(3) << 0.2 * midterm + 0.4 * final + 0.4 * median
               << std::setprecision(prec) << std::endl;
 
     return 0;

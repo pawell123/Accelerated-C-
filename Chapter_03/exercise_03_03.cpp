@@ -22,9 +22,9 @@ std::vector<std::string> readWords(std::istream& in)
 }
 
 // Version 1
-std::vector<std::pair<std::string, unsigned>> countWords1(std::istream& in)
+std::vector<std::pair<std::string, int>> countWords1(std::istream& in)
 {
-    std::vector<std::pair<std::string, unsigned>> ret;
+    std::vector<std::pair<std::string, int>> ret;
 
     std::vector<std::string> words = readWords(in);
     if (words.empty())
@@ -47,20 +47,19 @@ std::vector<std::pair<std::string, unsigned>> countWords1(std::istream& in)
         }
         else
         {
-            ret.push_back(std::make_pair(previousWord, counter));
+            ret.emplace_back(std::make_pair(previousWord, counter));
             counter = 1;
         }
         previousWord = currentWord;
     }
-    ret.push_back(std::make_pair(words.back(), counter));
-
+    ret.emplace_back(std::make_pair(words.back(), counter));
     return ret;
 }
 
 // Version 2 (using std::map)
-std::map<std::string, unsigned> countWords2(std::istream& in)
+std::map<std::string, int> countWords2(std::istream& in)
 {
-    std::map<std::string, unsigned> ret;
+    std::map<std::string, int> ret;
 
     std::string word;
     while (in >> word)
@@ -74,12 +73,13 @@ int main()
 {
     std::cout << "Write words: ";
 
-    const auto wordsCounters1 = countWords1(std::cin); // countWords2(std::cin)
+    const auto wordsCounters = countWords1(std::cin); // countWords2(std::cin)
 
-    for (const auto& item : wordsCounters1)
+    for (const auto& item : wordsCounters)
     {
-        std::cout << std::setw(10) << item.first << " " << item.second << std::endl;
+        std::cout << '\n' << item.first << ": " << item.second;
     }
+    std::cout << std::endl;
 
     return 0;
 }

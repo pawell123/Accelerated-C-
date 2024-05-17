@@ -24,12 +24,12 @@ int main()
 
     if (longestWordSize == 0)
     {
-        std::cerr << "No input!" << std::endl;
+        std::cout << "No input!" << std::endl;
         return 1;
     }
 
-    std::cout << "Shortest word size: " << shortestWordSize << std::endl;
-    std::cout << "Longest word size: " << longestWordSize << std::endl;
+    std::cout << "\nShortest word size: " << shortestWordSize << '\n'
+              << "Longest word size:  " << longestWordSize << std::endl;
 
     return 0;
 }

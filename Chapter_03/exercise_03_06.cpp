@@ -15,7 +15,7 @@ int main()
     std::string name;
     std::cin >> name;
 
-    std::cout << "Hello " << name << "!" << std::endl;
+    std::cout << "Hello " << name << '!' << std::endl;
 
     std::cout << "Please enter your midterm and final exam grades: ";
     double midterm, final;
@@ -23,21 +23,20 @@ int main()
 
     std::cout << "Enter all your homework grades, followed by end-of-file: ";
 
-    int count = 0;
-    double sum = 0.0;
+    int homeworkGradesCounter = 0;
+    double homeworkGradesSum = 0.0;
 
     double homeworkGrade;
     while (std::cin >> homeworkGrade)
     {
-        sum += homeworkGrade;
-        ++count;
+        homeworkGradesSum += homeworkGrade;
+        ++homeworkGradesCounter;
     }
 
-    const double homework = (count == 0) ? 0 : (0.4 * sum / count);
+    const double homework = (homeworkGradesCounter != 0) ? (0.4 * homeworkGradesSum / homeworkGradesCounter) : 0;
 
-    std::streamsize prec = std::cout.precision();
-    std::cout << std::endl << "Your final grade is " << std::setprecision(3)
-              << 0.2 * midterm + 0.4 * final + homework
+    const std::streamsize prec = std::cout.precision();
+    std::cout << "\nYour final grade is " << std::setprecision(3) << 0.2 * midterm + 0.4 * final + homework
               << std::setprecision(prec) << std::endl;
 
     return 0;

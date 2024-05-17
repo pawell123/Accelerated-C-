@@ -12,7 +12,7 @@ int main()
     std::string name;
     std::cin >> name;
 
-    std::cout << "Hello " << name << "!" << std::endl;
+    std::cout << "Hello " << name << '!' << std::endl;
 
     std::cout << "Please enter your midterm and final exam grades: ";
     double midterm, final;
@@ -30,9 +30,8 @@ int main()
         ++count;
     }
 
-    std::streamsize prec = std::cout.precision();
-    std::cout << "Your final grade is " << std::setprecision(3)
-              << 0.2 * midterm + 0.4 * final + 0.4 * sum / count
+    const std::streamsize prec = std::cout.precision();
+    std::cout << "Your final grade is " << std::setprecision(3) << 0.2 * midterm + 0.4 * final + 0.4 * sum / count
               << std::setprecision(prec) << std::endl;
 
     return 0;

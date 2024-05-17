@@ -7,6 +7,15 @@
 #include <tuple>
 #include <vector>
 
+std::ostream& operator<<(std::ostream& out, const std::vector<double>& vec)
+{
+    for (const auto item : vec)
+    {
+        out << item << ' ';
+    }
+    return out;
+}
+
 // https://en.wikipedia.org/wiki/Quartile - method 1
 std::tuple<double, double, double> quartiles(std::vector<double> vec)
 {
@@ -30,14 +39,14 @@ std::tuple<double, double, double> quartiles(std::vector<double> vec)
 int main()
 {
     const std::vector<double> numbers1{7, 15, 36, 39, 40, 41};
+    std::cout << "Quartiles of { " << numbers1 << " }:\n";
     const auto quartiles1 = quartiles(numbers1);
-
-    std::cout << std::get<0>(quartiles1) << " " << std::get<1>(quartiles1) << " " << std::get<2>(quartiles1) << std::endl;
+    std::cout << std::get<0>(quartiles1) << ' ' << std::get<1>(quartiles1) << ' ' << std::get<2>(quartiles1) << std::endl;
 
     const std::vector<double> numbers2{ 6, 7, 15, 36, 39, 40, 41, 42, 43, 47, 49 };
+    std::cout << "Quartiles of { " << numbers2 << " }:\n";
     const auto quartiles2 = quartiles(numbers2);
-
-    std::cout << std::get<0>(quartiles2) << " " << std::get<1>(quartiles2) << " " << std::get<2>(quartiles2) << std::endl;
+    std::cout << std::get<0>(quartiles2) << ' ' << std::get<1>(quartiles2) << ' ' << std::get<2>(quartiles2) << std::endl;
 
     return 0;
 }

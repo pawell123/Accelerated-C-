@@ -9,7 +9,7 @@ int main()
     int k = 0;
     while (k != n)
     {
-        using std::cout;    // using-declaration is valid only in the loop body
+        using std::cout; // using-declaration is valid only in the loop body
         cout << "*";
         ++k;
     }

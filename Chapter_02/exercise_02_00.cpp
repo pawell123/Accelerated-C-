@@ -8,6 +8,7 @@ using std::cin;
 using std::cout;
 using std::endl;
 using std::string;
+using std::flush;
 
 int main()
 {
@@ -16,13 +17,13 @@ int main()
     string name;
     cin >> name;
 
-    const string greeting = "Hello, " + name + "!";
+    const string greeting = "Hello, " + name + '!';
 
-    const int pad = 1;
-    const int rows = pad * 2 + 3;
+    constexpr int pad = 1;
+    constexpr int rows = pad * 2 + 3;
     const string::size_type cols = greeting.size() + pad * 2 + 2;
 
-    cout << endl;
+    cout << '\n';
 
     for (int r = 0; r != rows; ++r)
     {
@@ -39,17 +40,18 @@ int main()
             {
                 if (r == 0 || r == rows - 1 || c == 0 || c == cols - 1)
                 {
-                    cout << "*";
+                    cout << '*';
                 }
                 else
                 {
-                    cout << " ";
+                    cout << ' ';
                 }
                 ++c;
             }
         }
-        cout << endl;
+        cout << '\n';
     }
+    cout << flush;
 
     return 0;
 }

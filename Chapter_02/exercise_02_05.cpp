@@ -1,81 +1,71 @@
 // Exercise 2.5
-// Write a set of "*" characters so that they form a square, a rectangle, and a triangle.
+// Write a set of '*' characters so that they form a square, a rectangle, and a triangle.
 
 #include <iostream>
 #include <string>
 
-void square()
+void square(int sideLength)
 {
-    const int sideLength = 5;
-
     for (int i = 0; i != sideLength; ++i)
     {
-        if (i == 0 || i == sideLength-1)
+        if (i == 0 || i == sideLength - 1)
         {
             std::cout << std::string(sideLength, '*');
         }
         else
         {
-            std::cout << "*" + std::string(sideLength-2, ' ') + "*";
+            std::cout << '*' + std::string(sideLength - 2, ' ') + '*';
         }
-        std::cout << std::endl;
+        std::cout << '\n';
     }
 }
 
-void rectangle()
+void rectangle(int height, int width)
 {
-    const int height = 5;
-    const int width = 10;
-
     for (int i = 0; i != height; ++i)
     {
-        if (i == 0 || i == height-1)
+        if (i == 0 || i == height - 1)
         {
             std::cout << std::string(width, '*');
         }
         else
         {
-            std::cout << "*" + std::string(width-2, ' ') + "*";
+            std::cout << '*' + std::string(width - 2, ' ') + '*';
         }
-        std::cout << std::endl;
+        std::cout << '\n';
     }
 }
 
-void triangle()
+void triangle(int height)
 {
-    const int height = 10;
-
     for (int h = 0; h != height; ++h)
     {
         if (h == 0)
         {
-            std::cout << '*' << std::endl;
+            std::cout << '*';
         }
-        else if (h == 1)
+        else if (h == height - 1)
         {
-            std::cout << "**" << std::endl;
-        }
-        else if (h == height-1)
-        {
-            std::cout << std::string(height, '*') << std::endl;
+            std::cout << std::string(height, '*');
         }
         else
         {
-            std::cout << '*' + std::string(h-1, ' ') + '*';
-            std::cout << std::endl;
+            std::cout << '*' + std::string(h - 1, ' ') + '*';
         }
+        std::cout << '\n';
     }
 }
 
 int main()
 {
-    square();
+    square(5);
     std::cout << std::endl;
 
-    rectangle();
+    rectangle(5, 10);
     std::cout << std::endl;
 
-    triangle();
+    triangle(10);
+    std::cout << std::endl;
 
     return 0;
 }

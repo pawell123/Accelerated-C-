@@ -1,6 +1,6 @@
 // Exercise 2.4
-// The framing program writes the mostly blank lines that separate the borders from the greeting one character at a time.
-// Change the program so that it writes all the spaces needed in a single output expression.
+// The framing program writes the mostly blank lines that separate the borders from the greeting one character at a
+// time. Change the program so that it writes all the spaces needed in a single output expression.
 
 #include <iostream>
 #include <string>
@@ -11,13 +11,13 @@ int main()
     std::string name;
     std::cin >> name;
 
-    const std::string greeting = "Hello, " + name + "!";
+    const std::string greeting = "Hello, " + name + '!';
 
-    const int pad = 1;
-    const int rows = pad * 2 + 3;
+    constexpr int pad = 1;
+    constexpr int rows = pad * 2 + 3;
     const std::string::size_type cols = greeting.size() + pad * 2 + 2;
 
-    std::cout << std::endl;
+    std::cout << '\n';
 
     for (int r = 0; r != rows; ++r)
     {
@@ -27,13 +27,13 @@ int main()
             if (r == pad + 1 && c == 1)
             {
                 std::cout << std::string(pad, ' ') + greeting + std::string(pad, ' ');
-                c += greeting.size() + 2 * pad;
+                c += greeting.size() + pad * 2;
             }
             else
             {
-                if (r == 0 || r == rows-1 || c == 0 || c == cols-1)
+                if (r == 0 || r == rows - 1 || c == 0 || c == cols - 1)
                 {
-                    std::cout << "*";
+                    std::cout << '*';
                     ++c;
                 }
                 else
@@ -43,9 +43,9 @@ int main()
                 }
             }
         }
-        std::cout << std::endl;
+        std::cout << '\n';
     }
+    std::cout << std::flush;
 
     return 0;
 }
-

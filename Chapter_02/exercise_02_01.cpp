@@ -4,52 +4,48 @@
 #include <iostream>
 #include <string>
 
-using std::cin;
-using std::cout;
-using std::endl;
-using std::string;
-
 int main()
 {
-    cout << "Please enter your first name: ";
+    std::cout << "Please enter your first name: ";
 
-    string name;
-    cin >> name;
+    std::string name;
+    std::cin >> name;
 
-    const string greeting = "Hello, " + name + "!";
+    const std::string greeting = "Hello, " + name + '!';
 
-    const int pad = 0;
-    const int rows = pad * 2 + 3;
-    const string::size_type cols = greeting.size() + pad * 2 + 2;
+    constexpr int pad = 0;
+    constexpr int rows = pad * 2 + 3;
+    const std::string::size_type cols = greeting.size() + pad * 2 + 2;
 
-    cout << endl;
+    std::cout << '\n';
 
     for (int r = 0; r != rows; ++r)
     {
-        string::size_type c = 0;
+        std::string::size_type c = 0;
 
         while (c != cols)
         {
             if (r == pad + 1 && c == pad + 1)
             {
-                cout << greeting;
+                std::cout << greeting;
                 c += greeting.size();
             }
             else
             {
                 if (r == 0 || r == rows - 1 || c == 0 || c == cols - 1)
                 {
-                    cout << "*";
+                    std::cout << '*';
                 }
                 else
                 {
-                    cout << " ";
+                    std::cout << ' ';
                 }
                 ++c;
             }
         }
-        cout << endl;
+        std::cout << '\n';
     }
+    std::cout << std::flush;
 
     return 0;
 }

@@ -7,8 +7,9 @@ int main()
 {
     for (int i = 10; i != -6; --i)
     {
-        std::cout << i << std::endl;
+        std::cout << i << '\n';
     }
+    std::cout << std::flush;
 
     return 0;
 }

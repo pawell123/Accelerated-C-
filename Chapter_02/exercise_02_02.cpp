@@ -11,42 +11,42 @@ int main()
     std::string name;
     std::cin >> name;
 
-    const std::string greeting = "Hello, " + name + "!";
+    const std::string greeting = "Hello, " + name + '!';
 
-    const int rowsPad = 1;
-    const int colsPad = 5;
+    constexpr int rowsPad = 1;
+    constexpr int colsPad = 5;
 
-    const int rows = rowsPad * 2 + 3;
+    constexpr int rows = rowsPad * 2 + 3;
     const std::string::size_type cols = greeting.size() + colsPad * 2 + 2;
 
-    std::cout << std::endl;
+    std::cout << '\n';
 
     for (int r = 0; r != rows; ++r)
     {
         std::string::size_type c = 0;
         while (c != cols)
         {
-            if (r == rowsPad + 1 && c == colsPad+1)
+            if (r == rowsPad + 1 && c == colsPad + 1)
             {
                 std::cout << greeting;
                 c += greeting.size();
             }
             else
             {
-                if (r == 0 || r == rows-1 || c == 0 || c == cols-1)
+                if (r == 0 || r == rows - 1 || c == 0 || c == cols - 1)
                 {
-                    std::cout << "*";
+                    std::cout << '*';
                 }
                 else
                 {
-                    std::cout << " ";
+                    std::cout << ' ';
                 }
                 ++c;
             }
         }
-        std::cout << std::endl;
+        std::cout << '\n';
     }
+    std::cout << std::flush;
 
     return 0;
 }
-

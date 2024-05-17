@@ -15,9 +15,10 @@ int main()
     */
     // Above code is not correct (cannot deduce return type)
 
-    std::string::size_type maxlen = 0;
+    // Correct implementation:
+    std::string::size_type maxLength = 0;
     Student s;
-    std::max(s.name.size(), maxlen);
+    std::max(s.name.size(), maxLength);
 
     return 0;
 }

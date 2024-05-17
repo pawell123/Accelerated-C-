@@ -1,0 +1,7 @@
+// Exercise 4.8
+// If the following code is legal, what can we infer about the return type of f?
+
+double d = f()[n];
+ 
+// f() returns object of a type that implements `operator[]`. The `operator[]` returns object of type T.
+// T is double or can be converted to double (for example std::vector<double>)

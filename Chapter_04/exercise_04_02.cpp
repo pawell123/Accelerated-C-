@@ -10,7 +10,9 @@ int main()
 {
     for (int i = 0; i != 101; ++i)
     {
-        std::cout << std::setw(3) << i << " " << std::setw(5) << i * i << std::endl;
+        std::cout << std::setw(3) << i << ' ' << std::setw(5) << i * i << '\n';
     }
+    std::cout << std::setw(0) << std::flush;
+
     return 0;
 }

@@ -2,8 +2,8 @@
 // Rewrite the Student_info structure to calculate the grades immediately and store only the final grade.
 
 #include <algorithm>
-#include <ios>
 #include <iomanip>
+#include <ios>
 #include <iostream>
 #include <string>
 #include "Student.hpp"
@@ -23,14 +23,12 @@ int main()
 
     std::sort(students.begin(), students.end(), compare);
 
-    std::cout << std::endl;
-
-    std::streamsize prec = std::cout.precision(3);
-    for (const auto& student: students)
+    const std::streamsize prec = std::cout.precision(3);
+    for (const auto& s : students)
     {
-        std::cout << student.name << std::string(nameMaxLength - student.name.size() + 1, ' ') << student.finalGrade << std::endl;
+        std::cout << s.name << std::string(nameMaxLength - s.name.size() + 1, ' ') << s.finalGrade << '\n';
     }
-    std::cout.precision(prec);
+    std::cout << std::setprecision(prec) << std::flush;
 
     return 0;
 }

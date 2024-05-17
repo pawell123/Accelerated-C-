@@ -4,13 +4,17 @@
 // in the input, and to count how many times each word occurred.
 
 #include <algorithm>
+#include <iomanip>
 #include <iostream>
+#include <map>
 #include <string>
+#include <utility>
 #include <vector>
 
 std::vector<std::string> readWords(std::istream& in)
 {
     std::vector<std::string> ret;
+
     std::string word;
     while (in >> word)
     {
@@ -19,20 +23,19 @@ std::vector<std::string> readWords(std::istream& in)
     return ret;
 }
 
-int main()
+// Version 1
+std::vector<std::pair<std::string, int>> countWords1(std::vector<std::string> words)
 {
-    std::vector<std::string> words = readWords(std::cin);
-
-    std::cout << "Number of words: " << words.size() << std::endl;
+    std::vector<std::pair<std::string, int>> ret;
     if (words.empty())
     {
-        return 0;
+        return ret;
     }
 
     std::sort(words.begin(), words.end());
 
     std::string previousWord;
-    std::string::size_type counter = 0;
+    int counter = 0;
 
     for (std::string::size_type i = 0; i != words.size(); ++i)
     {
@@ -44,12 +47,39 @@ int main()
         }
         else
         {
-            std::cout << "Word: " << previousWord << ": " << counter << std::endl;
+            ret.emplace_back(std::make_pair(previousWord, counter));
             counter = 1;
         }
         previousWord = currentWord;
     }
-    std::cout << "Word: " << previousWord << ": " << counter << std::endl;
+    ret.emplace_back(std::make_pair(words.back(), counter));
+    return ret;
+}
+
+// Version 2
+std::map<std::string, int> countWords2(const std::vector<std::string>& words)
+{
+    std::map<std::string, int> ret;
+
+    for (const auto& word : words)
+    {
+        ++ret[word];
+    }
+    return ret;
+}
+
+int main()
+{
+    auto words = readWords(std::cin);
+    std::cout << "\nNumber of words: " << words.size() << std::endl;
+
+    std::cout << "\nWords:";
+    const auto wordsCounters = countWords1(std::move(words)); // countWords2(std::cin)
+    for (const auto& item : wordsCounters)
+    {
+        std::cout << '\n' << item.first << ": " << item.second;
+    }
+    std::cout << std::endl;
 
     return 0;
 }

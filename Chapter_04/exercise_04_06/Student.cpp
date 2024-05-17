@@ -1,14 +1,14 @@
 #include "Student.hpp"
-#include "../grade.hpp"
 #include <iostream>
 #include <stdexcept>
+#include "../grade.hpp"
 
 bool compare(const Student& lhs, const Student& rhs)
 {
     return lhs.name < rhs.name;
 }
 
-std::istream& read_hw(std::istream& in, std::vector<double>& homeworks)
+std::istream& readHomeworks(std::istream& in, std::vector<double>& homeworks)
 {
     if (in)
     {
@@ -31,7 +31,7 @@ std::istream& read(std::istream& in, Student& student)
     in >> student.name >> midterm >> final;
 
     std::vector<double> homeworks;
-    read_hw(in, homeworks);
+    readHomeworks(in, homeworks);
 
     try
     {

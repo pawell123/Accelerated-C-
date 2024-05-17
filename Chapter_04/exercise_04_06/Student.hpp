@@ -12,7 +12,7 @@ struct Student
 };
 
 bool compare(const Student&, const Student&);
-std::istream& read_hw(std::istream&, std::vector<double>&);
+std::istream& readHomeworks(std::istream&, std::vector<double>&);
 std::istream& read(std::istream&, Student&);
 
 #endif

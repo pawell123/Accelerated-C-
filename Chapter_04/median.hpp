@@ -6,4 +6,3 @@
 double median(std::vector<double>);
 
 #endif
-

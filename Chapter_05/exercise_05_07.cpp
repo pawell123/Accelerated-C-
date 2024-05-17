@@ -17,7 +17,7 @@
 std::string::size_type width(const std::vector<std::string>& vec)
 {
     std::string::size_type maxWidth = 0;
-    for (std::vector<std::string>::const_iterator iter = vec.cbegin(); iter != vec.cend(); ++iter)
+    for (auto iter = vec.cbegin(); iter != vec.cend(); ++iter)
     {
         maxWidth = std::max(maxWidth, iter->size());
     }
@@ -48,16 +48,15 @@ int main()
 
     for (const auto& line : pic)
     {
-        std::cout << line << std::endl;
+        std::cout << line << '\n';
     }
+    std::cout << std::flush;
 
     return 0;
 }
 
 /*
-
 Output:
 ****
 ****
-
 */

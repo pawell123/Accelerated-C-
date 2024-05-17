@@ -44,7 +44,7 @@ std::vector<std::string> hcat(const std::vector<std::string>& left, const std::v
 {
     std::vector<std::string> ret;
 
-    const std::string::size_type leftWidth = width(left)+1;
+    const std::string::size_type leftWidth = width(left) + 1;
 
     std::vector<std::string>::const_iterator leftIter = left.cbegin();
     std::vector<std::string>::const_iterator rightIter = right.cbegin();
@@ -61,7 +61,6 @@ std::vector<std::string> hcat(const std::vector<std::string>& left, const std::v
         {
             line += *rightIter++;
         }
-
         ret.push_back(line);
     }
     return ret;
@@ -69,23 +68,22 @@ std::vector<std::string> hcat(const std::vector<std::string>& left, const std::v
 
 int main()
 {
-    const std::vector<std::string> vec1{"aaa", "b", "cccccccccc", "ddddd", "ee", "ffffffff"};
-    const std::vector<std::string> vec2{"ggggggg", "hh", "i", "jjjjjjjjjj", "kkk", "lllll"};
+    const std::vector<std::string> vec1{"one", "two", "three", "four", "five", "six"};
+    const std::vector<std::string> vec2{"seven", "eight", "nine", "ten", "eleven", "twelve"};
 
     const std::vector<std::string> framedVCat = frame(vcat(vec1, vec2));
     const std::vector<std::string> framedHCat = frame(hcat(vec1, vec2));
 
     for (const auto& str : framedVCat)
     {
-        std::cout << str << std::endl;
+        std::cout << str << '\n';
     }
-
-    std::cout << std::endl;
 
     for (const auto& str : framedHCat)
     {
-        std::cout << str << std::endl;
+        std::cout << '\n' << str;
     }
+    std::cout << std::endl;
 
     return 0;
 }

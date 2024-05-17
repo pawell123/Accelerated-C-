@@ -4,8 +4,8 @@
 // the performance difference on input files of ten lines, 1,000 lines, and 10,000 lines.
 
 #include <array>
-#include <cstdlib>
 #include <chrono>
+#include <cstdlib>
 #include <ios>
 #include <iostream>
 #include <list>
@@ -41,6 +41,7 @@ Students extractFails(Students& students)
 template <typename Students>
 std::chrono::duration<double> measure(Students students)
 {
+    std::srand(0);
     const auto start = std::chrono::high_resolution_clock::now();
 
     extractFails(students);
@@ -52,20 +53,20 @@ std::chrono::duration<double> measure(Students students)
 
 int main()
 {
-    std::srand(0);
-
-    constexpr std::array<unsigned, 3> sizes = {10, 1000, 10000};
+    constexpr std::array<int, 3> sizes = {10, 1000, 10000};
 
     const Student exampleStudent{"Name", 1, 2, {3, 4, 5}};
 
     std::cout << std::fixed;
     for (const auto size : sizes)
     {
-        std::cout << "Size: " << size << std::endl;
+        std::cout << "Size: " << size << '\n';
+
         const std::vector<Student> studentsVec(size, exampleStudent);
-        std::cout << "Type std::vector<Student>: " << measure(studentsVec).count() << std::endl;
+        std::cout << "Type std::vector<Student>: " << measure(studentsVec).count() << "s\n";
+
         const std::list<Student> studentsList(size, exampleStudent);
-        std::cout << "Type std::list<Student>:   " << measure(studentsList).count() << std::endl << std::endl;
+        std::cout << "Type std::list<Student>:   " << measure(studentsList).count() << "s\n" << std::endl;
     }
 
     return 0;

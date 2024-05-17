@@ -15,7 +15,7 @@
 std::string::size_type width(const std::vector<std::string>& vec)
 {
     std::string::size_type maxWidth = 0;
-    for (std::vector<std::string>::const_iterator iter = vec.cbegin(); iter != vec.cend(); ++iter)
+    for (auto iter = vec.cbegin(); iter != vec.cend(); ++iter)
     {
         maxWidth = std::max(maxWidth, iter->size());
     }
@@ -26,7 +26,7 @@ std::vector<std::string> hcat(const std::vector<std::string>& left, const std::v
 {
     std::vector<std::string> ret;
 
-    const std::string::size_type leftWidth = width(left)+1;
+    const std::string::size_type leftWidth = width(left) + 1;
 
     std::vector<std::string>::const_iterator leftIter = left.cbegin();
     std::vector<std::string>::const_iterator rightIter = right.cbegin();
@@ -45,7 +45,6 @@ std::vector<std::string> hcat(const std::vector<std::string>& left, const std::v
         {
             line += *rightIter++;
         }
-
         ret.push_back(line);
     }
     return ret;
@@ -53,15 +52,16 @@ std::vector<std::string> hcat(const std::vector<std::string>& left, const std::v
 
 int main()
 {
-    std::vector<std::string> left{"one", "two", "three"};
-    std::vector<std::string> right{"four", "five", "six", "seven", "eight", "nine", "ten"};
+    const std::vector<std::string> left{"one", "two", "three"};
+    const std::vector<std::string> right{"four", "five", "six", "seven", "eight", "nine", "ten"};
 
-    std::vector<std::string> vec = hcat(left, right);
+    const std::vector<std::string> vec = hcat(left, right);
 
     for (const auto& line : vec)
     {
-        std::cout << line << std::endl;
+        std::cout << line << '\n';
     }
+    std::cout << std::flush;
 
     return 0;
 }

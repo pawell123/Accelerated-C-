@@ -1,7 +1,7 @@
 // Exercise 5.1
 /*
-Design and implement a program to produce a permuted index. A permuted index is one in which each phrase is indexed by every word in the phrase.
-So, given the following input:
+Design and implement a program to produce a permuted index. A permuted index is one in which each phrase is indexed by
+every word in the phrase. So, given the following input:
 
     The quick brown fox
     jumped over the fence
@@ -20,8 +20,9 @@ the output would be
 A good algorithm is suggested in The AWK Programming Language by Aho, Kernighan, and Weinberger (Addison-Wesley, 1988).
 That solution divides the problem into three steps:
 
-1. Read each line of the input and generate a set of rotations of that line. Each rotation puts the next word of the input in the first position
-and rotates the previous first word to the end of the phrase. So the output of this phase for the first line of our input would be:
+1. Read each line of the input and generate a set of rotations of that line. Each rotation puts the next word of the
+input in the first position and rotates the previous first word to the end of the phrase. So the output of this phase
+for the first line of our input would be:
 
     The quick brown fox
     quick brown fox The
@@ -32,7 +33,8 @@ Of course, it will be important to know where the original phrase ends and where
 
 2. Sort the rotations.
 
-3. Unrotate and write the permuted index, which involves finding the separator, putting the phrase back together, and writing it properly formatted.
+3. Unrotate and write the permuted index, which involves finding the separator, putting the phrase back together, and
+writing it properly formatted.
 */
 
 #include <algorithm>
@@ -46,13 +48,12 @@ Of course, it will be important to know where the original phrase ends and where
 
 namespace
 {
-const std::string delimiter;
+const std::string delimiter{};
 }
 
 using UnsplittedLines = std::vector<std::string>;
 using SplittedLine = std::list<std::string>;
 using SplittedLines = std::vector<SplittedLine>;
-
 
 SplittedLine splitLine(const std::string& unsplittedLine)
 {
@@ -62,7 +63,8 @@ SplittedLine splitLine(const std::string& unsplittedLine)
     while (iterLeft != unsplittedLine.cend())
     {
         iterLeft = std::find_if(iterLeft, unsplittedLine.cend(), [](const auto c) { return !std::isspace(c); });
-        const auto iterRight = std::find_if(iterLeft, unsplittedLine.cend(), [](const auto c) { return std::isspace(c); });
+        const auto iterRight =
+            std::find_if(iterLeft, unsplittedLine.cend(), [](const auto c) { return std::isspace(c); });
         if (iterLeft != iterRight)
         {
             ret.push_back(std::string(iterLeft, iterRight));
@@ -72,13 +74,23 @@ SplittedLine splitLine(const std::string& unsplittedLine)
     return ret;
 }
 
-SplittedLines splitLinesWithDelimiter(const UnsplittedLines& unsplittedLines)
+SplittedLines splitLines(const UnsplittedLines& unsplittedLines)
 {
     SplittedLines ret;
-    std::transform(unsplittedLines.cbegin(), unsplittedLines.cend(), std::back_inserter(ret), [](const auto& line) { auto splittedLine = splitLine(line);
-                                                                                                                     splittedLine.push_back(delimiter);
-                                                                                                                     return splittedLine; });
+    std::transform(
+        unsplittedLines.cbegin(),
+        unsplittedLines.cend(),
+        std::back_inserter(ret),
+        [](const auto& line) { return splitLine(line); });
     return ret;
+}
+
+void addDelimiters(SplittedLines& splittedLines)
+{
+    for (auto& line : splittedLines)
+    {
+        line.push_back(delimiter);
+    }
 }
 
 bool isDelimiter(const std::string& str)
@@ -93,7 +105,8 @@ SplittedLine toLower(const SplittedLine& line)
     for (const auto& word : line)
     {
         std::string lowerWord;
-        std::transform(word.cbegin(), word.cend(), std::back_inserter(lowerWord), [](const char c){ return std::tolower(c); });
+        std::transform(
+            word.cbegin(), word.cend(), std::back_inserter(lowerWord), [](const char c) { return std::tolower(c); });
         ret.push_back(lowerWord);
     }
     return ret;
@@ -135,7 +148,8 @@ std::vector<std::pair<SplittedLine, SplittedLine>> unrotate(const SplittedLines&
         const auto iter = std::find(line.cbegin(), line.cend(), delimiter);
         if (iter != line.cend())
         {
-            ret.push_back(std::make_pair(SplittedLine(std::next(iter), line.cend()), SplittedLine(line.cbegin(), iter)));
+            ret.push_back(
+                std::make_pair(SplittedLine(std::next(iter), line.cend()), SplittedLine(line.cbegin(), iter)));
         }
     }
     return ret;
@@ -143,14 +157,15 @@ std::vector<std::pair<SplittedLine, SplittedLine>> unrotate(const SplittedLines&
 
 std::vector<std::pair<SplittedLine, SplittedLine>> permutedIndex(const UnsplittedLines& unsplittedLines)
 {
-    SplittedLines splittedWithDelimiter = splitLinesWithDelimiter(unsplittedLines);
-    splittedWithDelimiter = rotate(splittedWithDelimiter);
-    return unrotate(splittedWithDelimiter);
+    SplittedLines splittedLines = splitLines(unsplittedLines);
+    addDelimiters(splittedLines);
+    splittedLines = rotate(splittedLines);
+    return unrotate(splittedLines);
 }
 
 int main()
 {
-    const UnsplittedLines unsplittedLines = { "The quick brown fox", "jumped over the fence" };
+    const UnsplittedLines unsplittedLines = {"The quick brown fox", "jumped over the fence"};
 
     const auto permutedIdx = permutedIndex(unsplittedLines);
 
@@ -158,17 +173,19 @@ int main()
     {
         for (const auto& partBeforeKeyword : line.first)
         {
-            std::cout << partBeforeKeyword << " ";
+            std::cout << partBeforeKeyword << ' ';
         }
 
-        std::cout << " -- ";
+        std::cout << "--";
 
         for (const auto& partWithKeyword : line.second)
         {
-            std::cout << partWithKeyword << " ";
+            std::cout << ' ' << partWithKeyword;
         }
 
-        std::cout << std::endl;
+        std::cout << '\n';
     }
+    std::cout << std::flush;
+
     return 0;
 }

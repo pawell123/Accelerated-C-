@@ -3,8 +3,8 @@
 
 #include <iostream>
 #include <list>
-#include "grade.hpp"
 #include "Student.hpp"
+#include "grade.hpp"
 
 bool fgrade(const Student& student)
 {
@@ -41,17 +41,18 @@ int main()
     std::list<Student> students{student1, student2, student3, student4};
     const std::list<Student> failedStudents = extract_fails4(students);
 
-    std::cout << "PASSED: " << std::endl;
+    std::cout << "PASSED: ";
     for (std::list<Student>::const_iterator iter = students.cbegin(); iter != students.cend(); ++iter)
     {
-        std::cout << iter->name << std::endl;
+        std::cout << '\n' << iter->name;
     }
 
-    std::cout << std::endl << "FAILED: " << std::endl;
+    std::cout << "\n\nFAILED: ";
     for (std::list<Student>::const_iterator iter = failedStudents.cbegin(); iter != failedStudents.cend(); ++iter)
     {
-        std::cout << iter->name << std::endl;
+        std::cout << '\n' << iter->name;
     }
+    std::cout << std::endl;
 
     return 0;
 }

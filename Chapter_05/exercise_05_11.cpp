@@ -10,11 +10,12 @@
 #include <algorithm>
 #include <iostream>
 #include <string>
+#include <string_view>
 #include <vector>
 
 bool isAscender(char c)
 {
-    static const std::string ascenders = "bdfhklt";
+    constexpr std::string_view ascenders = "bdfhklt";
     return std::find(ascenders.cbegin(), ascenders.cend(), c) != ascenders.cend();
 }
 
@@ -25,7 +26,7 @@ bool hasAscenders(const std::string& str)
 
 bool isDescender(char c)
 {
-    static const std::string descenders = "gjpqy";
+    constexpr std::string_view descenders = "gjpqy";
     return std::find(descenders.cbegin(), descenders.cend(), c) != descenders.cend();
 }
 
@@ -43,11 +44,12 @@ int main()
     {
         if (hasAscenders(word) || hasDescenders(word))
         {
-            std::cout << "Word: " << word << " has ascenders/descenders" << std::endl;
+            std::cout << "Word \"" << word << "\" has ascenders/descenders.\n";
         }
         else
         {
-            if (longestWordsWithoutAscendersNorDescenders.empty() || longestWordsWithoutAscendersNorDescenders.front().size() == word.size())
+            if (longestWordsWithoutAscendersNorDescenders.empty() ||
+                longestWordsWithoutAscendersNorDescenders.front().size() == word.size())
             {
                 longestWordsWithoutAscendersNorDescenders.push_back(word);
             }
@@ -60,16 +62,17 @@ int main()
 
     if (!longestWordsWithoutAscendersNorDescenders.empty())
     {
-        std::cout << std::endl << "Longest words without ascenders nor descenders are: " << std::endl;
+        std::cout << std::endl << "Longest words without ascenders nor descenders are:";
         for (const auto& word : longestWordsWithoutAscendersNorDescenders)
         {
-            std::cout << word << std::endl;
+            std::cout << '\n' << word;
         }
     }
     else
     {
-        std::cout << "No words without ascendrs/descenders" << std::endl;
+        std::cout << "No words without ascenders/descenders";
     }
+    std::cout << std::endl;
 
     return 0;
 }

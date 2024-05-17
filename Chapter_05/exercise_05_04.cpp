@@ -7,14 +7,14 @@
 #include <iostream>
 #include <list>
 #include <vector>
-#include "grade.hpp"
 #include "Student.hpp"
+#include "grade.hpp"
 
 // C++11
 using StudentsContainer = std::vector<Student>; // using StudentsContainer = std::list<Student>;
 
 // C++98
-// typedef std::vector<Student> StudentsContainer;      // typedef std::list<Student> StudentsContainer;
+// typedef std::vector<Student> StudentsContainer; // typedef std::list<Student> StudentsContainer;
 
 bool fgrade(const Student& student)
 {
@@ -49,19 +49,20 @@ int main()
     const Student student4{"Robert", 111, 222, {333, 444}};
 
     StudentsContainer students{student1, student2, student3, student4};
-    const StudentsContainer failedStudents = extract_fails(students);
+    const auto failedStudents = extract_fails(students);
 
-    std::cout << "PASSED: " << std::endl;
-    for (StudentsContainer::const_iterator iter = students.cbegin(); iter != students.cend(); ++iter)
+    std::cout << "PASSED:\n";
+    for (auto iter = students.cbegin(); iter != students.cend(); ++iter)
     {
-        std::cout << iter->name << std::endl;
+        std::cout << iter->name << '\n';
     }
 
-    std::cout << std::endl << "FAILED: " << std::endl;
-    for (StudentsContainer::const_iterator iter = failedStudents.cbegin(); iter != failedStudents.cend(); ++iter)
+    std::cout << "\nFAILED:";
+    for (auto iter = failedStudents.cbegin(); iter != failedStudents.cend(); ++iter)
     {
-        std::cout << iter->name << std::endl;
+        std::cout << '\n' << iter->name;
     }
+    std::cout << std::endl;
 
     return 0;
 }

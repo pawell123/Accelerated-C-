@@ -26,7 +26,7 @@ std::vector<std::string> split(const std::string& str)
 
         if (i != j)
         {
-            ret.push_back(str.substr(i, j-i));
+            ret.push_back(str.substr(i, j - i));
             i = j;
         }
     }
@@ -35,16 +35,16 @@ std::vector<std::string> split(const std::string& str)
 
 int main()
 {
-    std::string str;
-    while (std::getline(std::cin, str))
+    std::string line;
+    while (std::getline(std::cin, line))
     {
-        const std::vector<std::string> words = split(str);
-
+        const std::vector<std::string> words = split(line);
         for (std::vector<std::string>::const_iterator iter = words.cbegin(); iter != words.cend(); ++iter)
         {
-            std::cout << *iter << std::endl;
+            std::cout << *iter << '\n';
         }
     }
+    std::cout << std::flush;
 
     return 0;
 }

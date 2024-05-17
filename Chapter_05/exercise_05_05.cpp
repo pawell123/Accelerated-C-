@@ -5,7 +5,7 @@
 // What are the properties of pictures for which such a function is useful?
 // How can you tell whether a given picture has those properties?
 
-// Answer: It is useful when difference between the longest string and every other string is even.
+// Answer: It is useful when difference between the longest string and every other string is even number.
 
 #include <algorithm>
 #include <iostream>
@@ -36,7 +36,6 @@ std::vector<std::string> center(const std::vector<std::string>& pic)
 
         ret.push_back(std::string(leftPad, ' ') + line + std::string(rightPad, ' '));
     }
-
     return ret;
 }
 
@@ -47,15 +46,14 @@ int main()
 
     for (const auto& line : goodPicture)
     {
-        std::cout << line << std::endl;
+        std::cout << line << '\n';
     }
-
-    std::cout << std::endl;
 
     for (const auto& line : badPicture)
     {
-        std::cout << line << std::endl;
+        std::cout << '\n' << line;
     }
+    std::cout << std::endl;
 
     return 0;
 }

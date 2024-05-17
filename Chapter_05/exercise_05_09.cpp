@@ -36,17 +36,18 @@ int main()
         }
     }
 
-    std::cout << std::endl << "Result: " << std::endl;
+    std::cout << "\nResult:";
 
     for (const auto& word : lowercaseVector)
     {
-        std::cout << word << std::endl;
+        std::cout << '\n' << word;
     }
 
     for (const auto& word : uppercaseVector)
     {
-        std::cout << word << std::endl;
+        std::cout << '\n' << word;
     }
+    std::cout << std::endl;
 
     return 0;
 }

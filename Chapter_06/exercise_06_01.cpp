@@ -37,7 +37,7 @@ std::vector<std::string> hcat(const std::vector<std::string>& left, const std::v
 {
     std::vector<std::string> ret;
 
-    const std::string::size_type leftWidth = width(left)+1;
+    const std::string::size_type leftWidth = width(left) + 1;
 
     std::vector<std::string>::const_iterator leftIter = left.cbegin();
     std::vector<std::string>::const_iterator rightIter = right.cbegin();
@@ -67,12 +67,11 @@ int main()
 
     const std::vector<std::string> framedHCat = frame(hcat(vec1, vec2));
 
-    std::cout << std::endl;
-
     for (const auto& str : framedHCat)
     {
-        std::cout << str << std::endl;
+        std::cout << str << '\n';
     }
+    std::cout << std::flush;
 
     return 0;
 }

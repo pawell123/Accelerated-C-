@@ -4,19 +4,21 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "../common/findUrls.hpp" // it contains `findUrls` function
+#include "../common/findUrls.hpp"
 
 int main()
 {
-    const std::string text = " http://www.onet.pl invalid ssh://192.168.0.1:8080 :// @://invalid invalid:// invalid://*";
+    const std::string text =
+        " http://www.onet.pl invalid ssh://192.168.0.1:8080 :// @://invalid invalid:// invalid://*";
 
     const auto urls = findUrls(text);
 
-    std::cout << "URLs: " << std::endl;
+    std::cout << "URLs: \n";
     for (const auto& url : urls)
     {
-        std::cout << url << std::endl;
+        std::cout << url << '\n';
     }
+    std::cout << std::flush;
 
     return 0;
 }

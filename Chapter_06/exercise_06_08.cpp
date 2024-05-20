@@ -5,12 +5,8 @@
 
 #include <algorithm>
 #include <iostream>
-#include <iterator>
-#include <numeric>
 #include <vector>
 #include "analysis.hpp"
-#include "grade.hpp"
-#include "median.hpp"
 #include "Student.hpp"
 
 bool didAllHomeworks(const Student& student)

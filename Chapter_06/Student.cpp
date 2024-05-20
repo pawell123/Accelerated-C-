@@ -9,11 +9,11 @@ bool compare(const Student& lhs, const Student& rhs)
 std::istream& read(std::istream& in, Student& student)
 {
     in >> student.name >> student.midterm >> student.final;
-    read_hw(in, student.homeworks);
+    readHomeworks(in, student.homeworks);
     return in;
 }
 
-std::istream& read_hw(std::istream& in, std::vector<double>& homeworks)
+std::istream& readHomeworks(std::istream& in, std::vector<double>& homeworks)
 {
     if (in)
     {

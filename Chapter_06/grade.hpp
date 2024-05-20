@@ -6,7 +6,7 @@
 struct Student;
 
 double grade(double midterm, double final, double homework);
-double grade(double midterm, double final, std::vector<double> homeworks);
+double grade(double midterm, double final, const std::vector<double>& homeworks);
 double grade(const Student&);
 
 #endif

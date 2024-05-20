@@ -5,8 +5,8 @@
 #include <iostream>
 #include <iterator>
 #include <vector>
-#include "grade.hpp"
 #include "Student.hpp"
+#include "grade.hpp"
 
 bool isFailedStudent(const Student& student)
 {
@@ -30,14 +30,13 @@ std::vector<Student> extractFails1(std::vector<Student>& students)
 
 std::vector<Student> extractFails2(std::vector<Student>& students)
 {
-    const std::vector<Student>::iterator iter = std::stable_partition(students.begin(), students.end(), isPassedStudent);
+    const std::vector<Student>::iterator iter =
+        std::stable_partition(students.begin(), students.end(), isPassedStudent);
     std::vector<Student> failedStudents(iter, students.end());
     students.erase(iter, students.end());
 
     return failedStudents;
 }
-
-
 
 int main()
 {
@@ -53,17 +52,18 @@ int main()
 
     const std::vector<Student> failedStudents = extractFails2(students); // extractFails1(students);
 
-    std::cout << "Failed students: " << std::endl;
+    std::cout << "Failed students: ";
     for (const Student& student : failedStudents)
     {
-        std::cout << student.name << std::endl;
+        std::cout << '\n' << student.name;
     }
 
-    std::cout << std::endl << "Passed students: " << std::endl;
+    std::cout << std::endl << "\n\nPassed students: ";
     for (const Student& student : students)
     {
-        std::cout << student.name << std::endl;
+        std::cout << '\n' << student.name;
     }
+    std::cout << std::endl;
 
     return 0;
 }

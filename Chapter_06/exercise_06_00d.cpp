@@ -4,8 +4,8 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
-#include "analysis.hpp"
 #include "Student.hpp"
+#include "analysis.hpp"
 
 bool didAllHomeworks(const Student& student)
 {
@@ -43,7 +43,8 @@ int main()
 
     writeAnalysis(std::cout, "median", medianAnalysis, studentsWithAllHomeworks, studentsWithoutAllHomeworks);
     writeAnalysis(std::cout, "average", averageAnalysis, studentsWithAllHomeworks, studentsWithoutAllHomeworks);
-    writeAnalysis(std::cout, "optimisticMedian", optimisticMedianAnalysis, studentsWithAllHomeworks, studentsWithoutAllHomeworks);
+    writeAnalysis(
+        std::cout, "optimisticMedian", optimisticMedianAnalysis, studentsWithAllHomeworks, studentsWithoutAllHomeworks);
 
     return 0;
 }

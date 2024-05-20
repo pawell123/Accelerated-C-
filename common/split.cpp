@@ -16,7 +16,7 @@ std::vector<std::string> split(const std::string& str)
 
         if (iter1 != iter2)
         {
-            ret.push_back(std::string(iter1, iter2));
+            ret.emplace_back(iter1, iter2);
             iter1 = iter2;
         }
     }

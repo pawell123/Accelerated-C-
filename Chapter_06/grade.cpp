@@ -1,14 +1,14 @@
 #include "grade.hpp"
 #include <stdexcept>
-#include "median.hpp"
 #include "Student.hpp"
+#include "median.hpp"
 
 double grade(double midterm, double final, double homework)
 {
     return 0.2 * midterm + 0.4 * final + 0.4 * homework;
 }
 
-double grade(double midterm, double final, std::vector<double> homeworks)
+double grade(double midterm, double final, const std::vector<double>& homeworks)
 {
     if (homeworks.empty())
     {

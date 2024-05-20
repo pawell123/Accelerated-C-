@@ -5,7 +5,6 @@
 #include <numeric>
 #include "grade.hpp"
 #include "median.hpp"
-#include "Student.hpp"
 
 namespace
 {
@@ -42,7 +41,7 @@ double optimisticMedian(const Student& student)
     }
     return grade(student.midterm, student.final, nonZero);
 }
-}
+} // namespace
 
 double medianAnalysis(const std::vector<Student>& students)
 {
@@ -58,7 +57,6 @@ double averageAnalysis(const std::vector<Student>& students)
     return median(grades);
 }
 
-
 double optimisticMedianAnalysis(const std::vector<Student>& students)
 {
     std::vector<double> grades;
@@ -66,13 +64,15 @@ double optimisticMedianAnalysis(const std::vector<Student>& students)
     return median(grades);
 }
 
-void writeAnalysis(std::ostream& out,
-                   const std::string& name,
-                   double analysis(const std::vector<Student>&),
-                   const std::vector<Student>& studentsWithAllHomeworks,
-                   const std::vector<Student>& studentsWithoutAllHomeworks)
+void writeAnalysis(
+    std::ostream& out,
+    const std::string& name,
+    double analysis(const std::vector<Student>&),
+    const std::vector<Student>& studentsWithAllHomeworks,
+    const std::vector<Student>& studentsWithoutAllHomeworks)
 {
-    out << "Analysis " << name << ":" << std::endl;
-    out << "Median of grades for students with all homeworks : " << analysis(studentsWithAllHomeworks) << std::endl;
-    out << "Median of grades for students without all homeworks : " << analysis(studentsWithoutAllHomeworks) << std::endl;
+    out << "Analysis " << name << ":\n";
+    out << "Median of grades for students with all homeworks : " << analysis(studentsWithAllHomeworks) << '\n';
+    out << "Median of grades for students without all homeworks : " << analysis(studentsWithoutAllHomeworks)
+        << std::endl;
 }

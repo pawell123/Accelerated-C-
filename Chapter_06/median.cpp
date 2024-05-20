@@ -11,6 +11,6 @@ double median(std::vector<double> vec)
 
     std::sort(vec.begin(), vec.end());
 
-    std::vector<double>::size_type mid = vec.size() / 2;
-    return (vec.size() % 2) ? (vec[mid-1] + vec[mid]) / 2 : vec[mid];
+    const std::vector<double>::size_type mid = vec.size() / 2;
+    return (vec.size() % 2) ? (vec[mid - 1] + vec[mid]) / 2 : vec[mid];
 }

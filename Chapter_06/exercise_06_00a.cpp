@@ -3,8 +3,7 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
-#include "../common/split.hpp" // contains implementation of `split` function
+#include "../common/split.hpp"
 
 int main()
 {
@@ -14,7 +13,9 @@ int main()
 
     for (const auto& word : splitted)
     {
-        std::cout << word << std::endl;
+        std::cout << word << '\n';
     }
+    std::cout << std::flush;
+
     return 0;
 }

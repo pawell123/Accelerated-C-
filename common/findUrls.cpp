@@ -1,46 +1,45 @@
 #include "findUrls.hpp"
 #include <algorithm>
 #include <cctype>
+#include <string_view>
 
 namespace
 {
 bool isUrlChar(char c)
 {
-    static const std::string allowedChars = "!;/?:@=&$-_+!'(),.";
+    constexpr std::string_view allowedChars = "!;/?:@=&$-_+!'(),.";
     return std::isalnum(c) || std::find(allowedChars.cbegin(), allowedChars.cend(), c) != allowedChars.cend();
-
 }
 
 std::string::const_iterator urlBeg(std::string::const_iterator b, std::string::const_iterator e)
 {
-    static const std::string separator = "://";
+    constexpr std::string_view separator = "://";
 
-    std::string::const_iterator foundSeparator = b;
-    while ((foundSeparator = std::search(foundSeparator, e, separator.cbegin(), separator.cend())) != e)
+    std::string::const_iterator i = b;
+    while ((i = std::search(i, e, separator.cbegin(), separator.cend())) != e)
     {
-        if (foundSeparator != b && (foundSeparator + separator.size()) != e)
+        if (i != b && (i + separator.size()) != e)
         {
-            auto beg = foundSeparator;
+            auto beg = i;
             while (beg != b && std::isalpha(beg[-1]))
             {
                 --beg;
             }
-            if (beg != foundSeparator && isUrlChar(foundSeparator[separator.size()]))
+            if (beg != i && isUrlChar(i[separator.size()]))
             {
                 return beg;
             }
-
         }
-        foundSeparator += separator.size();
+        i += separator.size();
     }
     return e;
 }
 
 std::string::const_iterator urlEnd(std::string::const_iterator b, std::string::const_iterator e)
 {
-    return std::find_if(b, e, [](const auto c) { return !isUrlChar(c); });
+    return std::find_if_not(b, e, [](const auto c) { return isUrlChar(c); });
 }
-}
+} // namespace
 
 std::vector<std::string> findUrls(const std::string& str)
 {
@@ -54,7 +53,7 @@ std::vector<std::string> findUrls(const std::string& str)
         if (b != str.cend())
         {
             const auto after = urlEnd(b, str.cend());
-            ret.push_back(std::string(b, after));
+            ret.emplace_back(b, after);
             b = after;
         }
     }

@@ -5,8 +5,8 @@
 #include <algorithm>
 #include <iterator>
 #include <vector>
-#include "median.hpp"
 #include "Student.hpp"
+#include "median.hpp"
 
 double analysis(const std::vector<Student>& students, double analysisMethod(const Student&))
 {
